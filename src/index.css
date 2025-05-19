@@ -225,22 +225,6 @@ html {
 
 /* Selected Collection */
 
-@keyframes shimmer {
-  0% {
-    background-position: -450px 0;
-  }
-  100% {
-    background-position: 450px 0;
-  }
-}
-
-
-.selected-collection__description-skeleton{
-  background-color: #333;
-  border-radius: 4px;
-  opacity: 0.7;
-  animation: shimmer 3s infinite linear;
-}
 
 .selected-collection {
   display: flex;
