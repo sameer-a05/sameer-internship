@@ -18,7 +18,6 @@ export default function NewCollections() {
           "https://remote-internship-api-production.up.railway.app/newCollections"
         );
         setData(response.data.data);
-        console.log(response.data.data);
         setLoading(false);
       } catch (error) {
         console.log("Error occured in fetching data:", error);
@@ -67,7 +66,7 @@ export default function NewCollections() {
                               <span className="collection__stat__data">
                                 <Skeleton width="80px" height="14px" />
                               </span>
-                            </div>
+                            </div> 
                           </div>
                         </div>
                       </div>
