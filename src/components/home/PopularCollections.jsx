@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "../ui/Skeleton";
-import { SwiperSlide } from "swiper/react";
-import Swiper from "swiper";
+import { SwiperSlide, Swiper } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,7 +17,6 @@ export default function PopularCollections() {
         const response = await axios.get(
           "https://remote-internship-api-production.up.railway.app/popularCollections"
         );
-        console.log(response.data.data);
         setData(response.data.data);
         setLoading(false);
       } catch (error) {
@@ -37,13 +35,12 @@ export default function PopularCollections() {
             modules={[Navigation]}
             navigation
             spaceBetween={20}
-            slidesPerView={6}
             loop={true}
             >
 
             
             {loading
-              ? new Array(9).fill(0).map((_, index) => {
+              ? new Array(9).fill(0).map((_, index) => (
                   <SwiperSlide key={`skeleton-${index}`}>
                   <div className="collection-column">
                     <figure className="collection__img">
@@ -74,9 +71,9 @@ export default function PopularCollections() {
                     </div>
                   </div>
                   </SwiperSlide>
-                })
+              ))
               : data.map((nft, index) => (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <div className="collection-column">
                     <Link
                       to={`/collection/${nft.collectionId}`}
