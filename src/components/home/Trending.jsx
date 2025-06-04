@@ -3,6 +3,8 @@ import VerifiedIcon from "../../assets/verified.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../ui/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Trending() {
   const [data, setData] = useState([]);
@@ -23,9 +25,17 @@ export default function Trending() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+  AOS.init({
+    duration: 800, 
+    once: false,    
+  });
+}, []);
+
+
   return (
-    <section id="trending">
-      <div className="container">
+    <section id="trending" data-aos="fade-in">
+      <div className="container"> 
         <div className="row trending__row">
           <div className="trending__header">
             <h2 className="trending__header__title">Trending NFTs</h2>
@@ -45,7 +55,8 @@ export default function Trending() {
                 </div>
                 <div className="trending-column__header__price">Volume</div>
               </div>
-              <div className="trending-column__body">
+              <div className="trending-column__body" data-aos="fade-up"
+                        >
                 {loading
                   ? new Array(5).fill(0).map((_, index) => (
                       <div className="trending-collection" key={index}>
@@ -77,6 +88,8 @@ export default function Trending() {
                         to={`/collection/${nft.collectionId}`}
                         key={index}
                         className="trending-collection"
+                        data-aos="fade-up"
+                       
                       >
                         <div className="trending-collection__rank">
                           {nft.rank}
@@ -130,6 +143,8 @@ export default function Trending() {
                         to={`/collection/${nft.collectionId}`}
                         key={index}
                         className="trending-collection"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}
                       >
                         <div className="trending-collection__rank">
                           {nft.rank}

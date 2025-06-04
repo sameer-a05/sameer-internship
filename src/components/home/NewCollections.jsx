@@ -6,6 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Skeleton from "../ui/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function NewCollections() {
   const [data, setData] = useState([]);
@@ -26,12 +28,19 @@ export default function NewCollections() {
     fetchData();
   }, []);
 
+  useEffect(()=>{
+    AOS.init({
+      duration:800,
+      once:false
+    })
+  },[])
+
   return (
     <section id="new-collections">
       <div className="container">
         <div className="row">
-          <h2 className="new-collections__title">New Collections</h2>
-          <div className="new-collections__body">
+          <h2 className="new-collections__title" data-aos="fade-up">New Collections</h2>
+          <div className="new-collections__body" data-aos="fade-up">
             <Swiper
               modules={[Navigation]}
               navigation
