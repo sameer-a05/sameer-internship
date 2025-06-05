@@ -54,7 +54,7 @@ export default function UserPage() {
           <div className="row">
             <div className="user-info__wrapper">
               <figure className="user-info__img__wrapper">
-                <Skeleton height="120px" width="120px" borderRadius="50%" />
+                <Skeleton height="100%" width="100%" borderRadius="50%" />
               </figure>
               <h1 className="user-info__name">
                 <Skeleton height="24px" width="180px" />

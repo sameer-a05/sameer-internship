@@ -70,7 +70,7 @@ export default function CollectionsPage() {
             : data.slice(0, visibleCount).map((nft, index) => (
                 <div className="collection-column">
                   <Link
-                    to={`/collection/${nft.creatorId}`}
+                    to={`/collection/${nft.id}`}
                     key={index}
                     className="collection"
                   >
